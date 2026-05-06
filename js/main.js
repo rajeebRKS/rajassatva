@@ -29,45 +29,56 @@
     });
   }
 
-  // AJAX submit for Netlify Form
-  var form = document.getElementById('contactForm');
-  var submitBtn = document.getElementById('cfSubmit');
-  var status = document.getElementById('formStatus');
+  document.addEventListener("DOMContentLoaded", function () {
 
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!form.reportValidity()) return;
+const form = document.getElementById("contactForm");
+const popup = document.getElementById("popup");
+const popupBtn = document.getElementById("popupBtn");
+const submitBtn = document.getElementById("cfSubmit");
+const status = document.getElementById("formStatus");
 
-      submitBtn.classList.add('is-loading');
-      submitBtn.disabled = true;
-      status.className = 'form-status';
-      status.textContent = '';
+if (!form) return;
 
-      var data = new FormData(form);
-      var body = new URLSearchParams(data).toString();
+form.addEventListener("submit", function (e) {
+e.preventDefault();
 
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: body,
-      })
-        .then(function (res) {
-          if (!res.ok) throw new Error('Network error');
-          form.reset();
-          status.className = 'form-status is-success';
-          status.textContent = 'Thanks — your enquiry is in. We will reply within one working day.';
-        })
-        .catch(function () {
-          status.className = 'form-status is-error';
-          status.textContent = 'Something went wrong. Please email sc@rajassatva.in or WhatsApp us.';
-        })
-        .finally(function () {
-          submitBtn.classList.remove('is-loading');
-          submitBtn.disabled = false;
-        });
-    });
+```
+submitBtn.classList.add("is-loading");
+status.textContent = "";
+
+let data = new FormData(form);
+
+fetch(form.action, {
+  method: "POST",
+  body: data,
+  headers: { "Accept": "application/json" }
+})
+.then(response => {
+  submitBtn.classList.remove("is-loading");
+
+  if (response.ok) {
+    popup.style.display = "flex";
+    form.reset();
+  } else {
+    status.textContent = "Something went wrong. Please try again.";
+    status.classList.add("is-error");
   }
+})
+.catch(() => {
+  submitBtn.classList.remove("is-loading");
+  status.textContent = "Network error. Please try again.";
+  status.classList.add("is-error");
+});
+```
+
+});
+
+popupBtn.addEventListener("click", function () {
+window.location.href = "/";
+});
+
+});
+
 
   // Show success state if returning from non-JS submit
   if (window.location.search.indexOf('submitted=true') > -1 && status) {
