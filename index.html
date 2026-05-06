@@ -325,21 +325,68 @@
       </ul>
     </div>
 
-    <form id="contactForm" action="https://formsubmit.co/sco@rajassatva.in" method="POST">
+    <form
+  class="contact-form"
+  id="contactForm"
+  method="POST"
+  action="https://formsubmit.co/sc@rajassatva.in"
+>
 
   <input type="hidden" name="_subject" value="New Enquiry - Rajas Satva">
   <input type="hidden" name="_captcha" value="false">
 
-  <input type="text" name="name" placeholder="Name" required>
-  <input type="email" name="email" placeholder="Email" required>
-  <input type="tel" name="phone" placeholder="Phone">
-  <textarea name="message" placeholder="Message" required></textarea>
+  <p class="hp" aria-hidden="true">
+    <label>Don’t fill this out: <input name="_honey" tabindex="-1" autocomplete="off" /></label>
+  </p>
 
-<button type="submit">Send Enquiry</button>
+  <div class="field">
+    <label for="cf-name">Name</label>
+    <input id="cf-name" name="name" type="text" required />
+  </div>
 
+  <div class="field-row">
+    <div class="field">
+      <label for="cf-email">Email</label>
+      <input id="cf-email" name="email" type="email" required />
+    </div>
+    <div class="field">
+      <label for="cf-phone">Phone</label>
+      <input id="cf-phone" name="phone" type="tel" />
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="cf-org">Organisation</label>
+    <input id="cf-org" name="organisation" type="text" />
+  </div>
+
+  <div class="field">
+    <label for="cf-interest">I'm interested in</label>
+    <select id="cf-interest" name="interest">
+      <option>Commercial kitchen — full fit-out</option>
+      <option>Bakery setup</option>
+      <option>Equipment supply</option>
+      <option>Tablewares & FOH</option>
+      <option>Exhaust / gas pipeline</option>
+      <option>Consultancy & design</option>
+      <option>Something else</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="cf-msg">Message</label>
+    <textarea id="cf-msg" name="message" rows="5" required></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block" id="cfSubmit">
+    <span class="btn-label">Send enquiry</span>
+    <span class="btn-spinner"></span>
+  </button>
+
+  <p class="form-status" id="formStatus"></p>
 </form>
 
-<!-- POPUP MODAL -->
+<!-- Popup -->
 
 <div id="popup" class="popup">
   <div class="popup-content">
@@ -348,7 +395,6 @@
     <button id="popupBtn">OK</button>
   </div>
 </div>
-
   </div>
 </section>
 
