@@ -325,62 +325,30 @@
       </ul>
     </div>
 
-    <form 
-  action="https://formsubmit.co/sco@rajassatva.in" 
-  method="POST" 
-  class="contact-form"
->
-
-  <!-- Hidden settings -->
+    <form id="contactForm" action="https://formsubmit.co/sco@rajassatva.in" method="POST">
 
   <input type="hidden" name="_subject" value="New Enquiry - Rajas Satva">
   <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_next" value="https://rajassatva.com/thank-you.html">
 
-  <!-- Form Fields -->
-
-  <div class="field">
-    <label>Name</label>
-    <input type="text" name="name" required>
-  </div>
-
-  <div class="field">
-    <label>Email</label>
-    <input type="email" name="email" required>
-  </div>
-
-  <div class="field">
-    <label>Phone</label>
-    <input type="tel" name="phone">
-  </div>
-
-  <div class="field">
-    <label>Organisation</label>
-    <input type="text" name="organisation">
-  </div>
-
-  <div class="field">
-    <label>I'm interested in</label>
-    <select name="interest">
-      <option>Commercial kitchen — full fit-out</option>
-      <option>Bakery setup</option>
-      <option>Equipment supply</option>
-      <option>Tablewares & FOH</option>
-      <option>Exhaust / gas pipeline</option>
-      <option>Consultancy & design</option>
-      <option>Something else</option>
-    </select>
-  </div>
-
-  <div class="field">
-    <label>Message</label>
-    <textarea name="message" rows="5" required></textarea>
-  </div>
+  <input type="text" name="name" placeholder="Name" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <input type="tel" name="phone" placeholder="Phone">
+  <textarea name="message" placeholder="Message" required></textarea>
 
 <button type="submit">Send Enquiry</button>
 
 </form>
+
+<!-- POPUP MODAL -->
+
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <h2>Thank You!</h2>
+    <p>We will contact you shortly.</p>
+    <button id="popupBtn">OK</button>
+  </div>
+</div>
+
   </div>
 </section>
 
