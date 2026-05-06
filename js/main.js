@@ -1,35 +1,4 @@
 (function () {
-  // Year
-  var yEl = document.getElementById('year');
-  if (yEl) yEl.textContent = String(new Date().getFullYear());
-
-  // Header scroll state
-  var header = document.getElementById('siteHeader');
-  if (header) {
-    var onScroll = function () {
-      header.classList.toggle('scrolled', window.scrollY > 8);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  }
-
-  // Mobile nav
-  var toggle = document.getElementById('navToggle');
-  var nav = document.getElementById('primaryNav');
-  if (toggle && nav) {
-    toggle.addEventListener('click', function () {
-      var open = nav.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    nav.addEventListener('click', function (e) {
-      if (e.target && e.target.tagName === 'A') {
-        nav.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
 
 const form = document.getElementById("contactForm");
 const popup = document.getElementById("popup");
@@ -40,7 +9,7 @@ const status = document.getElementById("formStatus");
 if (!form) return;
 
 form.addEventListener("submit", function (e) {
-e.preventDefault();
+e.preventDefault(); // ✅ STOP REDIRECT
 
 ```
 submitBtn.classList.add("is-loading");
@@ -73,16 +42,10 @@ fetch(form.action, {
 
 });
 
+if (popupBtn) {
 popupBtn.addEventListener("click", function () {
 window.location.href = "/";
 });
+}
 
-});
-
-
-  // Show success state if returning from non-JS submit
-  if (window.location.search.indexOf('submitted=true') > -1 && status) {
-    status.className = 'form-status is-success';
-    status.textContent = 'Thanks — your enquiry is in. We will reply within one working day.';
-  }
 })();
