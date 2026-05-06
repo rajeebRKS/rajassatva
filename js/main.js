@@ -1,55 +1,60 @@
-(function () {
+document.addEventListener("DOMContentLoaded", function () {
 
-// Your existing code (header, nav etc stays same)
+  const form = document.getElementById("contactForm");
+  const popup = document.getElementById("popup");
+  const popupBtn = document.getElementById("popupBtn");
+  const submitBtn = document.getElementById("cfSubmit");
+  const status = document.getElementById("formStatus");
 
-// ===== FORM FIX START =====
-const form = document.getElementById("contactForm");
-const popup = document.getElementById("popup");
-const popupBtn = document.getElementById("popupBtn");
-const submitBtn = document.getElementById("cfSubmit");
-const status = document.getElementById("formStatus");
+  // DEBUG (important)
+  console.log("JS Loaded");
+  alert("JS is running"); // must show
 
-if (form) {
-form.addEventListener("submit", function (e) {
-e.preventDefault(); // STOP redirect
+  if (!form) {
+    console.log("Form not found");
+    return;
+  }
 
-```
-  submitBtn.classList.add("is-loading");
-  status.textContent = "";
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // STOP redirect
 
-  const data = new FormData(form);
+    console.log("Form submit intercepted");
 
-  fetch(form.action, {
-    method: "POST",
-    body: data,
-    headers: { "Accept": "application/json" }
-  })
-  .then(response => {
-    submitBtn.classList.remove("is-loading");
+    submitBtn.classList.add("is-loading");
+    status.textContent = "";
 
-    if (response.ok) {
-      popup.style.display = "flex";
-      form.reset();
-    } else {
-      status.textContent = "Something went wrong. Please try again.";
-      status.classList.add("is-error");
-    }
-  })
-  .catch(() => {
-    submitBtn.classList.remove("is-loading");
-    status.textContent = "Network error. Please try again.";
-    status.classList.add("is-error");
+    let data = new FormData(form);
+
+    fetch(form.action, {
+      method: "POST",
+      body: data,
+      headers: {
+        "Accept": "application/json"
+      }
+    })
+    .then(response => {
+      submitBtn.classList.remove("is-loading");
+
+      if (response.ok) {
+        console.log("Success");
+
+        popup.style.display = "flex"; // SHOW POPUP
+        form.reset();
+      } else {
+        status.textContent = "Something went wrong.";
+      }
+    })
+    .catch(error => {
+      console.log("Error:", error);
+      submitBtn.classList.remove("is-loading");
+      status.textContent = "Network error.";
+    });
   });
+
+  if (popupBtn) {
+    popupBtn.addEventListener("click", function () {
+      popup.style.display = "none";
+    });
+  }
+
 });
-```
-
-}
-
-if (popupBtn) {
-popupBtn.addEventListener("click", function () {
-window.location.href = "/";
-});
-}
-// ===== FORM FIX END =====
-
-})();
