@@ -6,10 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const submitBtn = document.getElementById("cfSubmit");
   const status = document.getElementById("formStatus");
 
-  // DEBUG (important)
-  console.log("JS Loaded");
-  alert("JS is running"); // must show
-
   if (!form) {
     console.log("Form not found");
     return;
