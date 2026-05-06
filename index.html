@@ -325,65 +325,62 @@
       </ul>
     </div>
 
-    <form
-      class="contact-form"
-      id="contactForm"
-      name="contact"
-      method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      action="/?submitted=true#contact"
-    >
-      <input type="hidden" name="form-name" value="contact" />
-      <p class="hp" aria-hidden="true">
-        <label>Don&rsquo;t fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
-      </p>
+    <form 
+  action="https://formsubmit.co/sco@rajassatva.in" 
+  method="POST" 
+  class="contact-form"
+>
 
-      <div class="field">
-        <label for="cf-name">Name</label>
-        <input id="cf-name" name="name" type="text" required autocomplete="name" />
-      </div>
+  <!-- Hidden settings -->
 
-      <div class="field-row">
-        <div class="field">
-          <label for="cf-email">Email</label>
-          <input id="cf-email" name="email" type="email" required autocomplete="email" />
-        </div>
-        <div class="field">
-          <label for="cf-phone">Phone</label>
-          <input id="cf-phone" name="phone" type="tel" autocomplete="tel" />
-        </div>
-      </div>
+  <input type="hidden" name="_subject" value="New Enquiry - Rajas Satva">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_next" value="https://rajassatva.com/thank-you.html">
 
-      <div class="field">
-        <label for="cf-org">Organisation</label>
-        <input id="cf-org" name="organisation" type="text" autocomplete="organization" />
-      </div>
+  <!-- Form Fields -->
 
-      <div class="field">
-        <label for="cf-interest">I'm interested in</label>
-        <select id="cf-interest" name="interest">
-          <option>Commercial kitchen — full fit-out</option>
-          <option>Bakery setup</option>
-          <option>Equipment supply</option>
-          <option>Tablewares &amp; FOH</option>
-          <option>Exhaust / gas pipeline</option>
-          <option>Consultancy &amp; design</option>
-          <option>Something else</option>
-        </select>
-      </div>
+  <div class="field">
+    <label>Name</label>
+    <input type="text" name="name" required>
+  </div>
 
-      <div class="field">
-        <label for="cf-msg">Tell us about the project</label>
-        <textarea id="cf-msg" name="message" rows="5" required></textarea>
-      </div>
+  <div class="field">
+    <label>Email</label>
+    <input type="email" name="email" required>
+  </div>
 
-      <button type="submit" class="btn btn-primary btn-block" id="cfSubmit">
-        <span class="btn-label">Send enquiry</span>
-        <span class="btn-spinner" aria-hidden="true"></span>
-      </button>
-      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-    </form>
+  <div class="field">
+    <label>Phone</label>
+    <input type="tel" name="phone">
+  </div>
+
+  <div class="field">
+    <label>Organisation</label>
+    <input type="text" name="organisation">
+  </div>
+
+  <div class="field">
+    <label>I'm interested in</label>
+    <select name="interest">
+      <option>Commercial kitchen — full fit-out</option>
+      <option>Bakery setup</option>
+      <option>Equipment supply</option>
+      <option>Tablewares & FOH</option>
+      <option>Exhaust / gas pipeline</option>
+      <option>Consultancy & design</option>
+      <option>Something else</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>Message</label>
+    <textarea name="message" rows="5" required></textarea>
+  </div>
+
+<button type="submit">Send Enquiry</button>
+
+</form>
   </div>
 </section>
 
