@@ -1,3 +1,4 @@
+alert("JS WORKING")
 (function () {
 
 const form = document.getElementById("contactForm");
