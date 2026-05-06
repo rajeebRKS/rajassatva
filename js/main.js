@@ -6,18 +6,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const submitBtn = document.getElementById("cfSubmit");
   const status = document.getElementById("formStatus");
 
-  if (!form) {
-    console.log("Form not found");
-    return;
-  }
+  if (!form) return;
 
   form.addEventListener("submit", function (e) {
-    e.preventDefault(); // STOP redirect
+    e.preventDefault(); // stop redirect
 
-    console.log("Form submit intercepted");
-
+    // ✅ Prevent double click
+    submitBtn.disabled = true;
     submitBtn.classList.add("is-loading");
+
     status.textContent = "";
+    status.className = "form-status";
 
     let data = new FormData(form);
 
@@ -29,27 +28,45 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     })
     .then(response => {
+      submitBtn.disabled = false;
       submitBtn.classList.remove("is-loading");
 
       if (response.ok) {
-        console.log("Success");
+        // ✅ Show popup
+        popup.style.display = "flex";
 
-        popup.style.display = "flex"; // SHOW POPUP
+        // ✅ Fallback success message
+        status.textContent = "Thanks! We’ll contact you soon.";
+        status.classList.add("is-success");
+
         form.reset();
       } else {
-        status.textContent = "Something went wrong.";
+        status.textContent = "Something went wrong. Please try again.";
+        status.classList.add("is-error");
       }
     })
-    .catch(error => {
-      console.log("Error:", error);
+    .catch(() => {
+      submitBtn.disabled = false;
       submitBtn.classList.remove("is-loading");
-      status.textContent = "Network error.";
+
+      status.textContent = "Network error. Please try again.";
+      status.classList.add("is-error");
     });
   });
 
+  // ✅ Close popup (UX improvement)
   if (popupBtn) {
     popupBtn.addEventListener("click", function () {
       popup.style.display = "none";
+    });
+  }
+
+  // ✅ Optional: click outside popup to close
+  if (popup) {
+    popup.addEventListener("click", function (e) {
+      if (e.target === popup) {
+        popup.style.display = "none";
+      }
     });
   }
 
